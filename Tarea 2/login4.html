@@ -1,0 +1,154 @@
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      width: 400px;
+      margin: 100px auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background-color: white;
+      border-radius: 10px;
+    }
+
+    .header {
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .form {
+      padding: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .form-input:focus {
+      border-color: #66aaff;
+    }
+
+    .form-button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #66aaff;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .form-button:hover {
+      background-color: #3399ff;
+    }
+
+    .form-button:active {
+      background-color: #0088ff;
+    }
+
+    .form-error {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #ffcccc;
+      color: #ff0000;
+      font-size: 14px;
+      display: none;
+    }
+
+    .form-success {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #ccffcc;
+      color: #00ff00;
+      font-size: 14px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">Login</div>
+    <div class="form">
+      <div class="form-group">
+        <label class="form-label" for="username">Username</label>
+        <input class="form-input" id="username" type="text" placeholder="Enter your username">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <input class="form-input" id="password" type="password" placeholder="Enter your password">
+      </div>
+      <div class="form-group">
+        <button class="form-button" id="submit" type="button">Submit</button>
+      </div>
+      <div class="form-error" id="error"></div>
+      <div class="form-success" id="success"></div>
+    </div>
+  </div>
+  <script>
+    // Get the elements from the document
+    var username = document.getElementById("username");
+    var password = document.getElementById("password");
+    var submit = document.getElementById("submit");
+    var error = document.getElementById("error");
+    var success = document.getElementById("success");
+
+    // Add a click event listener to the submit button
+    submit.addEventListener("click", function() {
+      // Get the values from the input fields
+      var usernameValue = username.value.trim();
+      var passwordValue = password.value.trim();
+
+      // Validate the input values
+      if (usernameValue === "" || passwordValue === "") {
+        // Show the error message
+        error.innerHTML = "Please fill in all the fields.";
+        error.style.display = "block";
+        // Hide the success message
+        success.style.display = "none";
+      } else if (usernameValue !== "admin" || passwordValue !== "1234") {
+        // Show the error message
+        error.innerHTML = "Invalid username or password.";
+        error.style.display = "block";
+        // Hide the success message
+        success.style.display = "none";
+      } else {
+        // Hide the error message
+        error.style.display = "none";
+        // Show the success message
+        success.innerHTML = "You have logged in successfully.";
+        success.style.display = "block";
+      }
+    });
+  </script>
+</body>
+</html>
+
